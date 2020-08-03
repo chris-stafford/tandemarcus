@@ -26,16 +26,17 @@ namespace API.Arcus.Webservice.Controllers
 
 		[HttpGet]
 		[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Get))]
-		public async Task<ActionResult<UserGetResponseDto>> Get([Required] Guid id)
+		public async Task<ActionResult<UserGetResponseDto>> Get(
+            [Required, FromQuery] string email)
 		{
 			try
 			{
-				var user = await _mediator.Send(new GetUserByIdQuery { Id = id });
+				var user = await _mediator.Send(new GetUserByEmailQuery { Email = email });
 
-                if (user == null)
-                {
-                    return NotFound();
-                }
+				if (user == null)
+				{
+					return NotFound();
+				}
 
 				return _mapper.Map<UserGetResponseDto>(user);
 			}

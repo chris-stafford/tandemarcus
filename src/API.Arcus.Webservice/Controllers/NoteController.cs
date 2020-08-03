@@ -48,24 +48,24 @@ namespace API.Arcus.Webservice.Controllers
 		[HttpPost]
 		[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Post))]
 		public async Task<ActionResult<NotePostResponseDto>> Post(
-            [FromRoute(Name="user-id")] Guid userId,
+			[FromRoute(Name="user-id")] Guid userId,
 			[Required, FromBody] NotePostRequestDto noteDto)
 		{
 			try
 			{
-                var domainNote = _mapper.Map<Note>(noteDto);
-                
-                domainNote.UserId = userId;
+				var domainNote = _mapper.Map<Note>(noteDto);
+				
+				domainNote.UserId = userId;
 
 				var note = await _mediator.Send(new CreateNoteCommand
 				{
 					Note = domainNote
 				});
 
-                if (note == null)
-                {
-                    return NotFound();
-                }
+				if (note == null)
+				{
+					return NotFound();
+				}
 
 				return new NotePostResponseDto
 				{

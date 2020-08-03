@@ -3,17 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Domain", "API.Arcus.Domain\API.Arcus.Domain.csproj", "{7A87FEE8-A9DF-4F55-8833-9C65770A5975}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Domain", "src\API.Arcus.Domain\API.Arcus.Domain.csproj", "{7A87FEE8-A9DF-4F55-8833-9C65770A5975}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Infrastructure", "API.Arcus.Infrastructure\API.Arcus.Infrastructure.csproj", "{8754CA75-EC7E-4A20-BA9A-5C1365A82223}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Infrastructure", "src\API.Arcus.Infrastructure\API.Arcus.Infrastructure.csproj", "{8754CA75-EC7E-4A20-BA9A-5C1365A82223}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Infrastructure.Concrete", "API.Arcus.Infrastructure.Concrete\API.Arcus.Infrastructure.Concrete.csproj", "{C5F7C951-795D-42D5-8BDA-4DE4001D9996}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Infrastructure.Concrete", "src\API.Arcus.Infrastructure.Concrete\API.Arcus.Infrastructure.Concrete.csproj", "{C5F7C951-795D-42D5-8BDA-4DE4001D9996}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Infrastructure.Test", "API.Arcus.Infrastructure.Test\API.Arcus.Infrastructure.Test.csproj", "{8D7CD4D2-535A-4CA6-BEE3-EAA78A28527D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Infrastructure.Test", "src\API.Arcus.Infrastructure.Test\API.Arcus.Infrastructure.Test.csproj", "{8D7CD4D2-535A-4CA6-BEE3-EAA78A28527D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Webservice", "API.Arcus.Webservice\API.Arcus.Webservice.csproj", "{C2EE7CCD-53AB-4636-BF5A-300168CE7F95}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Webservice", "src\API.Arcus.Webservice\API.Arcus.Webservice.csproj", "{C2EE7CCD-53AB-4636-BF5A-300168CE7F95}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Webservice.Test", "API.Arcus.Webservice.Test\API.Arcus.Webservice.Test.csproj", "{4D7CBC75-47DD-453E-8B7F-DD1E453F329A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API.Arcus.Webservice.Test", "src\API.Arcus.Webservice.Test\API.Arcus.Webservice.Test.csproj", "{4D7CBC75-47DD-453E-8B7F-DD1E453F329A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

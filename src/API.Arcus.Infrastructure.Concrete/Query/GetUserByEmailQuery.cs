@@ -4,8 +4,8 @@ using MediatR;
 
 namespace API.Arcus.Infrastructure.Concrete.Query
 {
-	public class GetUserByIdQuery : IRequest<User>
+	public class GetUserByEmailQuery : IRequest<User>
 	{
-		public Guid Id { get; set; }
+		public string Email { get; set; }
 	}
 }

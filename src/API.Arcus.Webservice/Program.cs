@@ -1,11 +1,15 @@
 using System;
+using API.Arcus.Infrastructure.Configuration;
+using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 using Serilog.Events;
 using Serilog.Exceptions;
 using Serilog.Formatting.Compact;
 using Serilog.Sinks.RollingFile;
+using API.Arcus.Webservice.Configuration;
 
 namespace API.Arcus.Webservice
 {
@@ -28,7 +32,7 @@ namespace API.Arcus.Webservice
 			try
 			{
 				Log.Information("Starting web host");
-				CreateHostBuilder(args).Build().Run();
+				BuildHostBuilder(args).Run();
 			}
 			catch (Exception ex)
 			{
@@ -37,11 +41,16 @@ namespace API.Arcus.Webservice
 			}
 		}
 
-		public static IHostBuilder CreateHostBuilder(string[] args) =>
-			Host.CreateDefaultBuilder(args)
-			.ConfigureWebHostDefaults(webBuilder =>
+		/// <summary>
+		/// Runtime method for creating startup
+		/// </summary>
+		public static IWebHost BuildHostBuilder(string[] args) =>
+			WebHost.CreateDefaultBuilder(args)
+			.UseStartup<Startup>()
+			.ConfigureServices(service =>
 			{
-				webBuilder.UseStartup<Startup>();
-			});
+				service.AddTransient<IDependencyInjectionConfigurator>(serviceProvider =>
+					new DependencyInjectionConfigurator());
+			}).Build();
 	}
 }
