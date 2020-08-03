@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Arcus.Webservice.Test
 {
-	 public static class SeedDataBaseExtension
+	public static class SeedDataBaseExtension
 	{
 		public static IServiceCollection SeedDataBase(this IServiceCollection services)
 		{

@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace API.Arcus.Infrastructure.Configuration
 {
-	 public interface IDependencyInjectionConfigurator
+	public interface IDependencyInjectionConfigurator
 	{
 		void Configure(IServiceCollection services, IConfiguration config);
 	}
