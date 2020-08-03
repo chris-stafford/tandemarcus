@@ -23,10 +23,10 @@ namespace API.Arcus.Infrastructure.Mapping
 						.Where(x => !string.IsNullOrWhiteSpace(x))
 						.Aggregate((x, y) => $"{x} {y}")));
 
-			CreateMap<NotePatchRequestDto, User>();
-			CreateMap<User, NotePatchResponseDto>();
-			CreateMap<NotePostRequestDto, User>();
-			CreateMap<User, NotePostResponseDto>();
+			CreateMap<UserPatchRequestDto, User>();
+			CreateMap<User, UserPatchResponseDto>();
+			CreateMap<UserPostRequestDto, User>();
+			CreateMap<User, UserPostResponseDto>();
 		}
 	}
 }

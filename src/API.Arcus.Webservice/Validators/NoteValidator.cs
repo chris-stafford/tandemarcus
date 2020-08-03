@@ -1,9 +1,9 @@
-using API.Arcus.Domain.Model;
+using API.Arcus.Infrastructure.Dto.Note;
 using FluentValidation;
 
 namespace API.Arcus.Webservice.Validators
 {
-	public class NoteValidator : AbstractValidator<Note>
+	public class NoteValidator : AbstractValidator<NotePostRequestDto>
 	{
 		public NoteValidator()
 		{

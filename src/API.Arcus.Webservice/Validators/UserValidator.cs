@@ -1,9 +1,10 @@
 using API.Arcus.Domain.Model;
+using API.Arcus.Infrastructure.Dto.User;
 using FluentValidation;
 
 namespace API.Arcus.Webservice.Validators
 {
-	public class UserValidator : AbstractValidator<User>
+	public class UserValidator : AbstractValidator<UserPostRequestDto>
 	{
 		public UserValidator()
 		{

@@ -7,9 +7,12 @@ using API.Arcus.Infrastructure.Concrete.Command;
 using API.Arcus.Infrastructure.Concrete.Configuration;
 using API.Arcus.Infrastructure.Concrete.Data;
 using API.Arcus.Infrastructure.Concrete.Query;
+using API.Arcus.Infrastructure.Dto.Note;
+using API.Arcus.Infrastructure.Dto.User;
 using API.Arcus.Infrastructure.Repository;
 using API.Arcus.Webservice.Validators;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +34,7 @@ namespace API.Arcus.Webservice
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
+			services.AddMvc().AddFluentValidation();
 #if DEBUG
 			services.AddSwaggerGen(c =>
 			{
@@ -49,9 +53,11 @@ namespace API.Arcus.Webservice
 			
 			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-			services.AddTransient<IValidator<User>, UserValidator>();
-			services.AddTransient<IValidator<Note>, NoteValidator>();
-			
+			services.AddMediatR(typeof(Startup).GetTypeInfo().Assembly);
+
+			services.AddTransient<IValidator<UserPostRequestDto>, UserValidator>();
+			services.AddTransient<IValidator<NotePostRequestDto>, NoteValidator>();
+
 			services.AddTransient<IRequestHandler<CreateNoteCommand, Note>, CreateNoteCommandHandler>();
 			services.AddTransient<IRequestHandler<CreateUserCommand, User>, CreateUserCommandHandler>();
 			services.AddTransient<IRequestHandler<GetNoteByUserIdQuery, IEnumerable<Note>>, GetNoteByUserIdQueryHandler>();

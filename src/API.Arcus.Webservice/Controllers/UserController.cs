@@ -32,6 +32,11 @@ namespace API.Arcus.Webservice.Controllers
 			{
 				var user = await _mediator.Send(new GetUserByIdQuery { Id = id });
 
+                if (user == null)
+                {
+                    return NotFound();
+                }
+
 				return _mapper.Map<UserGetResponseDto>(user);
 			}
 			catch (Exception ex)
@@ -47,14 +52,16 @@ namespace API.Arcus.Webservice.Controllers
 		{
 			try
 			{
-				var note = await _mediator.Send(new CreateNoteCommand
+				var userMap = _mapper.Map<User>(userDto);
+
+				var user = await _mediator.Send(new CreateUserCommand
 				{
-					Note = _mapper.Map<Note>(userDto)
+					User = userMap 
 				});
 
 				return new UserPostResponseDto
 				{
-					Id = note.Id
+					Id = user.Id
 				};
 			}
 			catch (Exception ex)
