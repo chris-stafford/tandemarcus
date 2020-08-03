@@ -27,7 +27,7 @@ namespace API.Arcus.Webservice.Controllers
 		[HttpGet]
 		[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Get))]
 		public async Task<ActionResult<UserGetResponseDto>> Get(
-            [Required, FromQuery] string email)
+			[Required, FromQuery] string email)
 		{
 			try
 			{
