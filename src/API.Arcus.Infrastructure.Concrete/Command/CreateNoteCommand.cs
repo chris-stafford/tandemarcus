@@ -4,8 +4,8 @@ using MediatR;
 
 namespace API.Arcus.Infrastructure.Concrete.Command
 {
-    public class CreateNoteCommand : IRequest<Note>
-    {
-        public Note Note { get; set; }
-    }
+	public class CreateNoteCommand : IRequest<Note>
+	{
+		public Note Note { get; set; }
+	}
 }

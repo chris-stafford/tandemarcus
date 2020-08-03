@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 using API.Arcus.Domain.Model;
 using API.Arcus.Infrastructure.Concrete.Command;
+using API.Arcus.Infrastructure.Concrete.Query;
 using API.Arcus.Infrastructure.Dto.User;
 using AutoMapper;
 using MediatR;
@@ -10,48 +11,56 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace API.Arcus.Webservice.Controllers
 {
-    [Route("user")]
+	[Route("user")]
 	[ApiController]
 	public class UserController : ControllerBase
 	{
 		private readonly IMapper _mapper;
-        private readonly IMediator _mediator;
+		private readonly IMediator _mediator;
 		
 		public UserController(IMapper mapper, IMediator mediator)
-        {
-            _mapper = mapper;
-            _mediator = mediator;
-        }
-
-        [HttpGet("user-id")]
-		[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Get))]
-		public async Task<ActionResult<User>> Get(
-			[Required, FromRoute(Name = "user-id")] Guid userId)
 		{
-			throw new NotImplementedException();
+			_mapper = mapper;
+			_mediator = mediator;
 		}
 
-        [HttpPost]
-		[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Post))]
-		public async Task<ActionResult<UserPostResponseDto>> Post(
-			[Required, FromBody] UserPostRequestDto dto)
+		[HttpGet]
+		[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Get))]
+		public async Task<ActionResult<UserGetResponseDto>> Get([Required] Guid id)
 		{
 			try
-            {
-                var user = await _mediator.Send(new CreateUserCommand
-                {
-                    User = _mapper.Map<User>(dto)
-                });
+			{
+				var user = await _mediator.Send(new GetUserByIdQuery { Id = id });
 
-                return new UserPostResponseDto
-                {
-                    Id = user.Id
-                };
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+				return _mapper.Map<UserGetResponseDto>(user);
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
 		}
-    }
+
+		[HttpPost]
+		[ApiConventionMethod(typeof(DefaultApiConventions), nameof(DefaultApiConventions.Post))]
+		public async Task<ActionResult<UserPostResponseDto>> Post(
+			[Required, FromBody] UserPostRequestDto userDto)
+		{
+			try
+			{
+				var note = await _mediator.Send(new CreateNoteCommand
+				{
+					Note = _mapper.Map<Note>(userDto)
+				});
+
+				return new UserPostResponseDto
+				{
+					Id = note.Id
+				};
+			}
+			catch (Exception ex)
+			{
+				return BadRequest(ex.Message);
+			}
+		}
+	}
 }

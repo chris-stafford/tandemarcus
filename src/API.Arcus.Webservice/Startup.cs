@@ -1,7 +1,16 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using API.Arcus.Domain.Model;
+using API.Arcus.Infrastructure.Concrete.Command;
 using API.Arcus.Infrastructure.Concrete.Configuration;
+using API.Arcus.Infrastructure.Concrete.Data;
+using API.Arcus.Infrastructure.Concrete.Query;
+using API.Arcus.Infrastructure.Repository;
+using API.Arcus.Webservice.Validators;
+using FluentValidation;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +46,16 @@ namespace API.Arcus.Webservice
 			});
 #endif
 			services.ConfigureConcreteServices(Configuration);
+			
+			services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
+			services.AddTransient<IValidator<User>, UserValidator>();
+			services.AddTransient<IValidator<Note>, NoteValidator>();
+			
+			services.AddTransient<IRequestHandler<CreateNoteCommand, Note>, CreateNoteCommandHandler>();
+			services.AddTransient<IRequestHandler<CreateUserCommand, User>, CreateUserCommandHandler>();
+			services.AddTransient<IRequestHandler<GetNoteByUserIdQuery, IEnumerable<Note>>, GetNoteByUserIdQueryHandler>();
+			services.AddTransient<IRequestHandler<GetUserByIdQuery, User>, GetUserByIdQueryHandler>();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
