@@ -43,7 +43,7 @@ I stopped at exactly 4 hours of work. Github reports 8 hours between the initial
 * AutoFixture
 
 ## Datastore
-The Azure cloud db referenced in the [appsettings.json file](https://github.com/chris-stafford/tandemarcus/blob/master/src/API.Arcus.Webservice/appsettings.json) will remain publicly available until I hear back from Tandem Diabetes. 
+The Azure cloud db referenced in the [appsettings.json](https://github.com/chris-stafford/tandemarcus/blob/master/src/API.Arcus.Webservice/appsettings.json) file will remain publicly available until I hear back from Tandem Diabetes. 
 
 Thank you,
 
