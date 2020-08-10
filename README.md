@@ -1,5 +1,5 @@
 # Overview
-## Tandem Arcus Backend Coding Excercise
+## Tandem Diabetes ARCUS Backend Coding Excercise
 API for accessing users and notes.
 
 ## API
