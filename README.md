@@ -4,24 +4,21 @@ API for accessing users and notes.
 
 ## API
 
-* GET /health
-Health check
+* `GET /health` Health check
 
-* GET /user/{user-id}/note
-Retrieve notes for user
+* `GET /user/{user-id}/note` Retrieve notes for user
 
-* POST /user/{user-id}/note
-Add a user note
+* `POST /user/{user-id}/note` Add a user note
 
-* GET /user
-Retrieve a user by email
+* `GET /user` Retrieve a user by email
 
-* POST /user
-Add a user
+* `POST /user` Add a user
 
 ## Try it out
 
 `dotnet run`
+
+## Notes
 
 ### The Notes entity was added due to a misreading of the requirements.
 
